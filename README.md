@@ -1,2 +1,2 @@
-# my-first
+# startup application
 for 260
