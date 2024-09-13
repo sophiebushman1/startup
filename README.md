@@ -1,2 +1,2 @@
 ## Sophie's website
-# elevator pitch
+# elevator pitch for me
