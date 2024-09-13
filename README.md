@@ -1,2 +1,2 @@
-# startup application
-for 260
+## Sophie's website
+# elevator pitch
