@@ -70,7 +70,7 @@
 ### Header, footer, main content: Well-organized layout across all pages.
 ### Diverse Layout design: The layout adjusts seamlessly for mobile, tablet, and desktop views.
 ### Navigation elements: Styling changes for active links, hovering effects, and transitions when moving between pages.
-### Application text: Consistent fonts and colors (`rgb(9, 105, 218`) across the website.
+### Application text: Consistent fonts and colors (`rgb(9, 105, 218)`) across the website.
 ### Images: Sizing and styling for all product images.
 
 ## React Deliverable:
