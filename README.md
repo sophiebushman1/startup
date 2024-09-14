@@ -17,7 +17,7 @@
 # Checkout and payment integration with third-party payment gateway (stripe)
 # Real-time cart updates when shared with a friend.
 # Data Storage of user data, product inventory, and purchase history.
-# ## Technology:
+## Technology:
 ## HTML:
 # Structuring the main website:  login, product listing, cart, and checkout pages.
 # Update the HTML page for browsing categories and checkout.
