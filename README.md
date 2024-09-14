@@ -14,7 +14,7 @@
 ### Browse products by categories 
 ### Add items to cart and view cart.
 ### Share cart with a friend to receive a 10% discount.
-### Checkout and payment integration with third-party payment gateway (stripe)
+### Checkout and payment integration with third-party payment gateway
 ### Real-time cart updates when shared with a friend.
 ### Data Storage of user data, product inventory, and purchase history.
 # Technology:
@@ -70,7 +70,7 @@
 ### Header, footer, main content: Well-organized layout across all pages.
 ### Diverse Layout design: The layout adjusts seamlessly for mobile, tablet, and desktop views.
 ### Navigation elements: Styling changes for active links, hovering effects, and transitions when moving between pages.
-### Application text: Consistent fonts and colors across the website.
+### Application text: Consistent fonts and colors (`rgb(9, 105, 218)`) across the website.
 ### Images: Sizing and styling for all product images.
 
 ## React Deliverable:
@@ -81,7 +81,7 @@
 
 ## Service Deliverable:
 ### Backend endpoints: API calls for login, cart management, and product retrieval.
-### Third-party API call: Stripe integration for payment processing.
+### Third-party API call: [Stripe](https://stripe.com/?utm_campaign=AMER_US_en_Google_Search_Brand_Stripe_EXA-20839462206&utm_medium=cpc&utm_source=google&ad_content=683853401230&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=c&gad_source=1&gclid=CjwKCAjwxY-3BhAuEiwAu7Y6s5htZcPaZgYvDsHHH-PPurr-GNz9PlxloB8ozBslqcswVF59RAf2OxoCb_sQAvD_BwE) integration for payment processing.
 ### Frontend service calls: Using fetch or Axios to communicate with the backend.
 
 ## Database/Login Deliverable:
