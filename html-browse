@@ -8,7 +8,8 @@
         <a href="">Necklaces </a>
         <a href="">Earrings </a>
         <a href="">Accessories </a>
-        <a href="">Cart/Che ckout </a>
+        <a href="">Cart/Checkout </a>
+        <a href="">Search </a>
     </header>
     <table id="products">
         <tr>
@@ -22,7 +23,7 @@
           <td>product description and price</td>
         </tr>
       </table>
-    
+      <a href="">Waterproof Warranty</a>
 
     <footer>
         <a href="">My Github Repo </a>
