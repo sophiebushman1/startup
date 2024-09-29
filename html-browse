@@ -1,0 +1,32 @@
+<main>
+<body>
+    <header>
+        <h1>Cocojewl</h1>
+        <h2>Welcome "USER"</h2>
+        <a href="">Bestsellers </a>
+        <a href="">Bracelets </a>
+        <a href="">Rings </a>
+        <a href="">Necklaces </a>
+        <a href="">Earrings </a>
+        <a href="">Accessories </a>
+        <a href="">Cart/Checkout </a>
+    </header>
+    <table id="products">
+        <tr>
+          <th> <img src="" width="50" > </th>
+          <th> <img src="" width="50" > </th>
+          <th> <img src="" width="50" > </th>
+        </tr>
+        <tr>
+          <td>product description and price</td>
+          <td>product description and price</td>
+          <td>product description and price</td>
+        </tr>
+      </table>
+    
+
+    <footer>
+        <a href="">My Github Repo </a>
+    </footer>
+</body>
+</main>
