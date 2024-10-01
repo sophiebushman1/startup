@@ -1,35 +1,101 @@
 <main>
-<body>
-    <header>
-        <h1>Cocojewel</h1>
-        <h2>Welcome "USER"</h2>
-        <a href="">Bestsellers </a>
-        <a href="">Bracelets </a>
-        <a href="">Rings </a>
-        <a href="">Necklaces </a>
-        <a href="">Earrings </a>
-        <a href="">Accessories </a>
-        <a href="">Cart/Checkout </a>
-    </header>
-    <nav>
-        
-    </nav>
-    <table id="products">
-        <tr>
-          <th> <img src="" width="50" > </th>
-          <th> <img src="" width="50" > </th>
-          <th> <img src="" width="50" > </th>
-        </tr>
-        <tr>
-          <td>product description and price</td>
-          <td>product description and price</td>
-          <td>product description and price</td>
-        </tr>
-      </table>
-    
-
-    <footer>
-        <a href="https://github.com/sophiebushman1/startup">My Github Repo </a>
-    </footer>
-</body>
-</main>
+  <body>
+      <header>
+          <h1>Cocojewel</h1>
+          <h2>Welcome "USER"</h2>
+          <nav>
+              <a href="">Bestsellers</a>
+              <a href="">Bracelets</a>
+              <a href="">Rings</a>
+              <a href="">Necklaces</a>
+              <a href="">Earrings</a>
+              <a href="">Accessories</a>
+              <a href="">Cart & Checkout</a>
+          </nav>
+          <div class="search-bar">
+              <input type="text" placeholder="Search">
+              <button type="button">Search</button>
+          </div>
+      </header>
+  
+      <section id="products">
+          <h3>Browse Our Products</h3>
+          <div class="product-grid">
+              <div class="product-item">
+                  <img src="img/bracelet.jpg" alt="Bracelet" width="150">
+                  <p>Bracelet description - $PRICE</p>
+                  <button>Add to Cart</button>
+              </div>
+              <div class="product-item">
+                  <img src="img/earring.jpg" alt="Ring" width="150">
+                  <p>Earring description - $PRICE</p>
+                  <button>Add to Cart</button>
+              </div>
+              <div class="product-item">
+                  <img src="img/necklace.jpg" alt="Necklace" width="150">
+                  <p>Necklace description - $PRICE</p>
+                  <button>Add to Cart</button>
+              </div>
+              
+          </div>
+      </section>
+  
+      <footer>
+          <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
+      </footer>
+  
+      <style>
+          header nav {
+              margin-top: 10px;
+          }
+  
+          nav a {
+              margin-right: 15px;
+              text-decoration: none;
+              color: #333;
+          }
+  
+          .search-bar {
+              margin-top: 10px;
+          }
+  
+          #products {
+              margin-top: 20px;
+          }
+  
+          .product-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 20px;
+          }
+  
+          .product-item {
+              text-align: center;
+              border: 1px solid #ccc;
+              padding: 10px;
+              border-radius: 8px;
+          }
+  
+          .product-item img {
+              max-width: 100%;
+              border-radius: 8px;
+          }
+  
+          .product-item p {
+              margin: 10px 0;
+          }
+  
+          .product-item button {
+              background-color: #182744;
+              color: #fff;
+              padding: 5px 10px;
+              border: none;
+              border-radius: 5px;
+          }
+  
+          .product-item button:hover {
+              background-color: #aaeeff;
+          }
+      </style>
+  </body>
+  </main>
