@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocojewel - Checkout</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Cocojewel</h1>
+        <h2>Checkout</h2>
+    </header>
+
+    <nav>
+        <!-- Navigation links to other pages (e.g., Home, Browse, Cart) -->
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <main>
+        <section id="user-information">
+            <h3>User Information</h3>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Shipping Address:</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
+            </form>
+        </section>
+
+        <section id="cart-summary">
+            <h3>Cart Summary</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example rows, replace with dynamic content -->
+                    <tr>
+                        <td>Product Name 1</td>
+                        <td>1</td>
+                        <td>$Price</td>
+                    </tr>
+                    <tr>
+                        <td>Product Name 2</td>
+                        <td>2</td>
+                        <td>$Price</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Total: $TotalPrice</p>
+        </section>
+
+        <section id="payment-options">
+            <h3>Payment Options</h3>
+            <form>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
+
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </form>
+        </section>
+
+        <button id="confirm-button">Confirm Purchase</button>
+    </main>
+
+    <footer>
+        <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
+    </footer>
+</body>
+</html>

@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # if you are a TA looking for html notes scroll all the way down, thanks!
-# Sophie's jewlery website: Cocojewl
-### Where can you securely order stunning waterproof jewelry perfect for any occasion? At Cocojewl, you are guaranteed to find stylish and beach ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewl.  You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, feel free to add to your cart and share it with a friend! By sharing with friends you can get a 10% discount code on your purchase. Cocojewl is your new favorite jewelry boutique!
+# Sophie's jewelry website: Cocojewl
+### Where can you securely order stunning waterproof jewelry perfect for any occasion? At Cocojewl, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewl. You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, feel free to add to your cart and share it with a friend! By sharing with friends, you can get a 10% discount code on your purchase. Cocojewl is your new favorite jewelry boutique!
 
 ### Design of website:
 ![Design of jewelry website](images/design.png)
@@ -15,19 +14,21 @@
 ### Browse products by categories 
 ### Add items to cart and view cart.
 ### Share cart with a friend to receive a 10% discount.
-### Checkout and payment integration with third-party payment gateway
+### Checkout and payment integration with a third-party payment gateway.
 ### Real-time cart updates when shared with a friend.
 ### Data Storage of user data, product inventory, and purchase history.
+
 # Technology:
 ## HTML:
-### Structuring the main website:  login, product listing, cart, and checkout pages.
+### Structuring the main website: login, product listing, cart, and checkout pages.
 ### Update the HTML page for browsing categories and checkout.
 ### Links between categories, products, and account pages.
+
 ## CSS:
 ### Styling the website.
 ### Using CSS for an organized layout.
 ### Responsive design using media queries or layouts (maybe for different device sizes).
-### CSS animations for a smooth and professional experience when shopping
+### CSS animations for a smooth and professional experience when shopping.
 
 ## JavaScript:
 ### Interactivity for actions like signing in, adding items to the cart, and checking out your cart.
@@ -39,7 +40,7 @@
 ### Creating constant components for product, cart view, and login display.
 ### React Router for navigating between pages (browse, login, and checkout).
 ### Use React to update cart items quickly.
-### Showing user specific details (like an updated cart).
+### Showing user-specific details (like an updated cart).
 
 ## Service (Backend):
 ### Building an API with endpoints for:
@@ -76,7 +77,7 @@
 
 ## React Deliverable:
 ### Components: Separate components for product listings, cart management, and checkout process.
-### State management: Handling cart updates in real time, using hooks like useState and useEffect.
+### State management: Handling cart updates in real-time, using hooks like useState and useEffect.
 ### Routing: React Router to switch between different views (e.g., product page, cart, checkout).
 ### Application logic: Showing updated cart contents when a friend views the shared cart.
 
@@ -118,3 +119,4 @@
 ### browse.html: A page for browsing products.
 ### cart.html: Displays the user's cart and checkout options.
 ### share.html: Helps users to share their cart with friends.
+### checkout.html: Allows users to finalize their purchases, enter shipping and payment information, and confirm their order.
