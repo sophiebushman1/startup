@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+# if you are a TA looking for html notes scroll all the way down, thanks!
 # Sophie's jewlery website: Cocojewl
 ### Where can you securely order stunning waterproof jewelry perfect for any occasion? At Cocojewl, you are guaranteed to find stylish and beach ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewl.  You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, feel free to add to your cart and share it with a friend! By sharing with friends you can get a 10% discount code on your purchase. Cocojewl is your new favorite jewelry boutique!
 
@@ -94,3 +95,26 @@
 ### Backend listens for WebSocket connections: Real-time updates for the shared cart.
 ### Frontend connects via WebSocket: The shared cart is updated in real-time when the friend adds or removes items.
 ### Data sent over WebSocket: Updates are broadcasted between users in real-time, reflecting cart changes.
+
+# Cocojewel Website
+### This project is a jewelry e-commerce website called Cocojewel. The site features a clean and user-friendly design, allowing users to browse and purchase a variety of jewelry products.
+
+## Key Features:
+### Home Page: Welcomes users and provides links to other pages.
+### Product Browsing: Users can view products organized by categories such as rings, bracelets, necklaces, and more.
+### Cart Functionality: Users can add items to their cart, view their selections, and proceed to checkout.
+### Share Cart: Users can share their cart with friends to receive a discount.
+### WebSocket Integration: Displays the number of times carts have been shared in real-time.
+
+## Technology Used or will be used:
+### DONE - HTML: For structuring the web pages.
+### NOT YET - CSS: To style the website and make it visually appealing.
+### NOT YET - JavaScript: For adding interactivity and handling user actions.
+### NOT YET - React: For creating reusable components and managing state (coming soon).
+### NOT YET - WebSocket: For "real-time" updates when sharing carts.
+
+## Pages:
+### index.html: The main entry point of the website.
+### browse.html: A page for browsing products.
+### cart.html: Displays the user's cart and checkout options.
+### share.html: Helps users to share their cart with friends.
