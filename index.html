@@ -1,19 +1,77 @@
 <main>
-<body>
-    <header>
-        <h1>Cocojewel</h1>
-        <a href="">LOG IN </a>
-        
-    </header>
-    <nav>
-        
-    </nav>
-    <p>
-        At Cocojewel, you are guaranteed to find stylish and beach ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewel. You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, feel free to add to your cart and share it with a friend! By sharing with friends you can get a 10% discount code on your purchase. Cocojewel is your new favorite jewelry boutique!
-    </p>
-    <a href="policy.html">Waterproof policy</a>
-<footer>
-    <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
-</footer>
-</body>
-</main>
+    <body>
+        <header>
+            <h1>Cocojewel</h1>
+            <a href="login.html">LOG IN</a>
+        </header>
+    
+        <section id="login-section">
+            <h2>Log in to your account</h2>
+            <form id="login-form" method="post" action="#">
+                <!-- Placeholder for authentication technology-->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+    
+                <button type="submit">Log In</button>
+            </form>
+    
+            <p id="error-message" style="color: red; display: none;">
+                <!-- Placeholder for error messages if theres a failed login -->
+                Invalid username or password.
+            </p>
+        </section>
+    
+        <section id="about">
+            <p>
+                At Cocojewel, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more! 
+                The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewel. 
+                You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, 
+                feel free to add them to your cart and share it with a friend! By sharing with friends, you can get a 10% discount code on your purchase. 
+                Cocojewel is your new favorite jewelry boutique!
+            </p>
+            <a href="policy.html">Waterproof policy</a>
+        </section>
+    
+        <footer>
+            <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
+        </footer>
+    
+        <style>
+            #login-section {
+                margin-top: 20px;
+            }
+    
+            #login-form {
+                display: flex;
+                flex-direction: column;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+    
+            #login-form label {
+                margin-top: 10px;
+            }
+    
+            #login-form input {
+                padding: 8px;
+                margin-top: 5px;
+            }
+    
+            #login-form button {
+                margin-top: 15px;
+                padding: 10px;
+                background-color: #333;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+    
+            #login-form button:hover {
+                background-color: #aaeeff;
+            }
+        </style>
+    </body>
+    </main>
