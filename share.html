@@ -2,14 +2,33 @@
 <body>
     <header>
         <h1>Cocojewel</h1>
+        <h2>Welcome "USER"</h2>
         
     </header>
     <nav>
         
     </nav>
+    <section id="cart-details">
+        <h3>Your Cart</h3>
+        
+        <div id="cart-items">
+            <p>Your cart is currently empty.</p>
+        </div>
+
+        
+        <div id="share-cart">
+            <h3>Share your cart with a friend!</h3>
+            <form id="share-form" action="/share" method="post">
+                <label for="friend-email">Friend's Email:</label>
+                <input type="email" id="friend-email" name="friend-email" required>
+                <button type="submit">Share Cart</button>
+            </form>
+        </div>
+    </section>
+
 
     <footer>
-        <a href="">My Github Repo </a>
+        <a href="https://github.com/sophiebushman1/startup">My Github Repo </a>
     </footer>
 </body>
 </main>
