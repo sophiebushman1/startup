@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocojewel - Checkout</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css"> <!-- links CSS code -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 </head>
 <body>
     <header>
@@ -13,7 +14,7 @@
     </header>
 
     <nav>
-        <!-- Navigation links to other pages (e.g., Home, Browse, Cart) -->
+        <!-- my links to other html pages -->
         <a href="index.html">Home</a>
         <a href="browse.html">Browse</a>
         <a href="cart.html">Cart</a>
@@ -48,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Example rows, replace with dynamic content -->
+                    <!-- Example products-->
                     <tr>
                         <td>Product Name 1</td>
                         <td>1</td>
@@ -77,6 +78,7 @@
                 <input type="text" id="cvv" name="cvv" required>
             </form>
         </section>
+        <div id="paypal-button-container"></div>
 
         <button id="confirm-button">Confirm Purchase</button>
     </main>
@@ -84,5 +86,11 @@
     <footer>
         <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
     </footer>
+    <script>
+    <!--Paypal script -->
+    
+    
+    </script>
+    
 </body>
 </html>
