@@ -120,3 +120,38 @@
 ### cart.html: Displays the user's cart and checkout options.
 ### share.html: Helps users to share their cart with friends.
 ### checkout.html: Allows users to finalize their purchases, enter shipping and payment information, and confirm their order.
+
+
+
+# CSS Styling and Improvements
+
+# 1. Global Styling
+# - **Font Family**: The entire website uses the `Courier New` font or a similar monospaced font (`Courier, monospace`) to give a consistent and clean look across all pages.
+# - **Body Background**: Applied a light teal background color (`#b2f2e9`) to give the site a refreshing and modern appearance.
+
+# 2. Header Design
+# - **Pastel Pink Header**: The header across all pages features a pastel bright pink background (`#ffccdd`) with a slightly darker border to enhance the visual appeal.
+# - **Centered Text**: The header content is centered for a professional and clean layout.
+
+# 3. Link Styling
+# - **Custom Link Color**: Links are styled with a dark gray color (`#333`) to avoid the default blue color.
+# - **Hover Effect**: When users hover over links, they become bold, providing a visual cue for interactivity.
+
+# 4. Interactive Elements with Transition
+# - **Smooth Hover Transitions**: Interactive elements such as buttons, product items, and cart items have a smooth transition effect when hovered over.
+#   - **Buttons**: Change background color on hover for a more interactive feel.
+#   - **Product and Cart Items**: Slight zoom-in effect (`transform: scale(1.05)`) when hovering over product or cart items, giving a polished user experience.
+
+# 5. Responsive Design
+# - The website layout adjusts based on screen size:
+#   - For smaller screens, product items resize to 45% width or 100% width, ensuring a mobile-friendly design.
+#   - Buttons expand to fit the screen width on smaller devices.
+
+---
+
+# How to Use the CSS
+# - The `style.css` file is linked in all HTML files to provide consistent styling across the entire website.
+# - Make sure to add the following line in the `<head>` section of each HTML file:
+
+  ```html
+  <link rel="stylesheet" href="style.css">
