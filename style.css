@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Courier New', Courier, monospace; /* Courier or similar font */
+    background-color: #b2f2e9; /* Light teal background */
     color: #333;
     line-height: 1.6;
 }
@@ -24,22 +24,25 @@ h1, h2, h3 {
     padding: 20px;
 }
 
-/* Header for consistent branding */
+/* Header for branding */
 header {
-    background-color: #333;
+    background-color: #ffccdd; /* Pastel bright pink */
     color: #fff;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
     font-size: 24px;
+    border-bottom: 4px solid #ff99aa; /* Slightly darker pink border for accent */
 }
 
 a {
-    color: #007bff;
+    color: #333; /* Override default link color */
     text-decoration: none;
+    font-weight: normal;
+    transition: all 0.3s ease; /* Glide effect for hover */
 }
 
 a:hover {
-    text-decoration: underline;
+    font-weight: bold; /* Make links bold when hovered */
 }
 
 /* Buttons styling */
@@ -52,10 +55,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease; /* Glide effect for hover */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
 /* Form styles for consistency */
@@ -109,6 +113,11 @@ p {
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Glide effect for hover */
+}
+
+.product-item:hover {
+    transform: scale(1.05); /* Slight scale-up on hover */
 }
 
 .product-item img {
@@ -143,6 +152,11 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease; /* Glide effect for hover */
+}
+
+.cart-items li:hover {
+    transform: scale(1.05); /* Slight scale-up on hover */
 }
 
 .cart-actions {
