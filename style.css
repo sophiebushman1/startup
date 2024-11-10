@@ -99,6 +99,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     border-color: #007bff;
     outline: none;
 }
+footer {
+    margin-left: 10px;
+}
 
 p {
     margin-top: 10px;

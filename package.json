@@ -1,0 +1,19 @@
+{
+  "name": "start-up",
+  "version": "1.0.0",
+  "description": "### Design of website: ![Design of jewelry website](images/design.png) ### Diagram of user and backend interaction: ![Diagram](images/diagram.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
