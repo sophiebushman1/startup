@@ -118,3 +118,12 @@ article {
     animation-play-state: running;
   }
 }
+
+Vite Demo:
+## Vite and React Setup
+- Learned to use Vite for setting up a React project.
+- Vite provides a fast development server, easy JSX support, and a straightforward build process.
+- Customizations:
+  - Changed background and text colors.
+  - Modified counter to increment by 10.
+  - Updated App component to display my name.
