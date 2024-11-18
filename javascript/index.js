@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = prompt('Enter your password:');
         
         //  sends data to backend to create a new user
-        fetch('http://localhost:3000/api/hello', {
+        fetch('/api/hello', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,6 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error creating user:', error);
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const fetchQuote = () => {
+              fetch('https://quote.cs260.click')
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error('Failed to fetch quote');
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  document.getElementById('quote').textContent = `"${data.quote}"`;
+                  document.getElementById('quote-author').textContent = `— ${data.author}`;
+                })
+                .catch((error) => {
+                  console.error(error);
+                  document.getElementById('quote').textContent = 'Could not load a quote at this time.';
+                  document.getElementById('quote-author').textContent = '';
+                });
+            };
+          
+            // Call fetchQuote when the page loads
+            fetchQuote();
+          
+            // Example: Fetch a new quote every 30 seconds
+            setInterval(fetchQuote, 30000);
+          });
+          
     });
 
     // Handle login (POST request to /api/auth/login)

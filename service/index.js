@@ -22,3 +22,17 @@ app.get('/api/hello', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port${port}`);
 });
+
+const users = []; // Store user credentials temporarily (in-memory)
+
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+
+    const user = users.find((user) => user.username === username);
+    if (user && user.password === password) {
+        res.json({ success: true, msg: 'Login successful' });
+    } else {
+        res.status(401).json({ success: false, msg: 'Invalid username or password' });
+    }
+});
+
