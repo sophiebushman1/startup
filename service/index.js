@@ -10,9 +10,7 @@ app.use(express.json());
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-app.get('*', (_req, res) => {
-  res.send({ msg: 'Service' });
-});
+
 app.use(express.static('public'));
 
 // Endpoint to respond with a hello message
@@ -59,6 +57,10 @@ app.post('/api/auth/login', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+app.get('*', (_req, res) => {
+  res.send({ msg: 'Service' });
 });
 
 

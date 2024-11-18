@@ -1,106 +1,34 @@
 //FRONTEND
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    const errorMessage = document.getElementById('error-message');
-    const createAccountBtn = document.getElementById('create-account-btn');
-
-    // Handle new user creation
-    createAccountBtn.addEventListener('click', () => {
-        const email = prompt('Enter your email to create an account:');
-        const password = prompt('Enter your password:');
-        
-        // Sends data to backend to create a new user
-        fetch('/api/hello', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email, password: password }),
+    // Function to fetch and display random quote
+    const fetchRandomQuote = () => {
+      // Fetch from Quotable API (or another API if preferred)
+      fetch('https://api.quotable.io/random')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch quote');
+          }
+          return response.json();
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.token) {
-                alert('Account created successfully. Token: ' + data.token);
-            } else {
-                alert('Account creation failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error creating user:', error);
-        });
-    });
-
-    // Handle login (POST request to /api/auth/login)
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // the login request
-        fetch('/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: username, password: password }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.token) {
-                // Redirect to the browse page
-                localStorage.setItem('auth_token', data.token); // Store token in localStorage
-                window.location.href = 'browse.html'; 
-            } else {
-                // Display login failure message
-                errorMessage.style.display = 'block';
-            }
-        })
-        .catch(error => {
-            console.error('Login error:', error);
-        });
-    });
-
-    // Fetch a quote and display it
-    const fetchQuote = () => {
-        fetch('https://quote.cs260.click')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch quote');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                document.getElementById('quote').textContent = `"${data.quote}"`;
-                document.getElementById('quote-author').textContent = `— ${data.author}`;
-            })
-            .catch((error) => {
-                console.error(error);
-                document.getElementById('quote').textContent = 'Could not load a quote at this time.';
-                document.getElementById('quote-author').textContent = '';
-            });
-    };
-
-    // Call fetchQuote when the page loads
-    fetchQuote();
-
-    // Example: Fetch a new quote every 30 seconds
-    setInterval(fetchQuote, 30000);
-
-    // FETCH from backend
-    fetch('/api/hello')
-        .then((response) => response.json())
         .then((data) => {
-            console.log(data.msg); // logs hello message
-            // Display message
-            const backendMessageElement = document.createElement('h1');
-            backendMessageElement.textContent = data.msg; 
-            document.body.appendChild(backendMessageElement);
+          // Update the quote and author in the DOM
+          const quoteText = data.content; // Quote text
+          const authorName = data.author; // Author's name
+  
+          document.getElementById('quote').textContent = `"${quoteText}"`;
+          document.getElementById('quote-author').textContent = `- ${authorName}`;
         })
         .catch((error) => {
-            console.error('Error fetching data:', error);
+          console.error('Error fetching quote:', error);
+          // Display error message if fetch fails
+          document.getElementById('quote').textContent = 'Error loading quote.';
+          document.getElementById('quote-author').textContent = '';
         });
-});
+    };
+  
+    // Fetch quote when the page loads
+    fetchRandomQuote();
+  });
+  

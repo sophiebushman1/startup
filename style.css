@@ -27,6 +27,22 @@ body {
     text-align: center;
     margin-top: 10px;
   }
+  #quote-container {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  #quote {
+    font-style: italic;
+    color: #333;
+    font-size: 1.5em;
+  }
+
+  #quote-author {
+    font-weight: bold;
+    color: #555;
+  }
 
   #about-section {
     margin-top: 20px;
