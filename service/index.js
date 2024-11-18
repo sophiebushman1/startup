@@ -8,11 +8,13 @@ app.use(cors());
 
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
-app.use(express.static('public'));
+
 
 app.get('*', (_req, res) => {
   res.send({ msg: 'Service' });
 });
+app.use(express.static('public'));
+
 //if that message doesn't work
 app.get('/api/hello', (req, res) => {
   console.log('Frontend connected to /api/hello');

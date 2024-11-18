@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         // the login request
-        fetch('http://localhost:3000/api/auth/login', {
+        fetch('/api/hello', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // FETCH from backend
-    fetch('http://localhost:3000/api/hello')
+    fetch('/api/hello')
         .then((response) => response.json())
         .then((data) => {
             console.log(data.msg); // logs hello message
