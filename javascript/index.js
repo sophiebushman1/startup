@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = prompt('Enter your password:');
         
         //  sends data to backend to create a new user
-        fetch('http://localhost:3000/api/auth/create', {
+        fetch('http://localhost:3000/api/hello', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
