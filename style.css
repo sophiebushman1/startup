@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-left: auto;
 }
 
 body {
@@ -9,14 +10,44 @@ body {
     background-color: #b2f2e9; /* Light teal background */
     color: #333;
     line-height: 1.6;
-    
-    
-   
 }
+    
+#quote-container {
+    display: block; /* Ensure it's displayed */
+    margin-top: 20px; /* Optional, for spacing */
+  }
+  
+  #quote {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  #quote-author {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  #about-section {
+    margin-top: 20px;
+    margin-bottom:20px;
+
+  }
+    
+  #login-section {
+    
+    
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Ensure text inside elements is centered */
+    width: 50%; /* Set the width */
+    
+    margin: 0 auto; /* Center the section horizontally on the page */
+  }
 
 h1, h2, h3 {
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-weight: bold;
     margin-left:20px;
 }
@@ -26,7 +57,7 @@ h2 {
 
 /* Container to center the content and limit the width */
 .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -55,15 +86,20 @@ a:hover {
 
 /* Buttons styling */
 button {
-    background-color: #007bff;
+    background-color: #ff4576;
     color: white;
     border: none;
     padding: 10px 20px;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease; /* Glide effect for hover */
+    margin-left: auto;
+    
+    
+    
+    
 }
 
 button:hover {
@@ -100,11 +136,14 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     outline: none;
 }
 footer {
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
 }
 
 p {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 /* Product list grid */
