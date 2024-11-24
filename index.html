@@ -1,3 +1,4 @@
+<!-- Frontend (index.html) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,34 +26,12 @@
 
           <button type="submit">Log In</button>
         </form>
+
         <button id="create-account-btn">Create Account</button>
         <p id="error-message" style="color: red; display: none;">
           Invalid username or password.
         </p>
       </section>
-
-      <section id="signup-section" style="display:none;">
-        <h2>Create a new account</h2>
-        <form id="signup-form" method="post" action="#">
-          <label for="signup-email">Email:</label>
-          <input type="email" id="signup-email" name="signup-email" required />
-
-          <label for="signup-password">Password:</label>
-          <input type="password" id="signup-password" name="signup-password" required />
-
-          <button type="submit">Create Account</button>
-        </form>
-        <p id="signup-error-message" style="color: red; display: none;">
-          Email already in use.
-        </p>
-        <button id="back-to-login-btn">Back to Login</button>
-      </section>
-
-      <section id="user-info-section" style="display:none;">
-        <h2 id="user-info">Welcome!</h2>
-        <button id="logout-btn">Log Out</button>
-      </section>
-
       <div id="quote-container">
         <p id="quote">Loading</p>
         <p id="quote-author">Quote of the Day</p>
@@ -70,3 +49,4 @@
     <script src="index.js" defer></script>
   </body>
 </html>
+
