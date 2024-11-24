@@ -10,7 +10,6 @@
   <body>
     <header>
       <h1>Cocojewel</h1>
-      <!-- Move the name below the header -->
       <p class="creator-name">Created by Sophia Bushman</p>
       <a href="browse.html">BROWSE</a>
     </header>
@@ -26,12 +25,34 @@
 
           <button type="submit">Log In</button>
         </form>
-
         <button id="create-account-btn">Create Account</button>
         <p id="error-message" style="color: red; display: none;">
           Invalid username or password.
         </p>
       </section>
+
+      <section id="signup-section" style="display:none;">
+        <h2>Create a new account</h2>
+        <form id="signup-form" method="post" action="#">
+          <label for="signup-email">Email:</label>
+          <input type="email" id="signup-email" name="signup-email" required />
+
+          <label for="signup-password">Password:</label>
+          <input type="password" id="signup-password" name="signup-password" required />
+
+          <button type="submit">Create Account</button>
+        </form>
+        <p id="signup-error-message" style="color: red; display: none;">
+          Email already in use.
+        </p>
+        <button id="back-to-login-btn">Back to Login</button>
+      </section>
+
+      <section id="user-info-section" style="display:none;">
+        <h2 id="user-info">Welcome!</h2>
+        <button id="logout-btn">Log Out</button>
+      </section>
+
       <div id="quote-container">
         <p id="quote">Loading</p>
         <p id="quote-author">Quote of the Day</p>
@@ -40,10 +61,9 @@
     <footer>
       <section id="about">
         <p>
-          At Cocojewel, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim. Find sustainable and affordable jewelry at Cocojewel. You can also find other accessories like tote bags and hats for your next trip to the beach. When you find the perfect products for you, feel free to add them to your cart and share it with a friend! By sharing with friends, you can get a 10% discount code on your purchase. Cocojewel is your new favorite jewelry boutique!
+          At Cocojewel, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more! The best part is, you don't have the hassle of taking off jewelry before going for a swim.
         </p>
         <a href="policy.html">Waterproof policy</a>
-      
         <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
       </section>
     </footer>
