@@ -1,38 +1,74 @@
-// Backend (index.js)
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
-const app = express();
 const cors = require('cors');
-app.use(cors());
+const app = express();
+const DB = require('./database.js');  // Assuming you have a database.js module for DB logic
 
-// Middleware to parse JSON request bodies
+const authCookieName = 'token';
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+// JSON body parsing middleware
 app.use(express.json());
+app.use(cookieParser());
 
-// In-memory storage for users (simulating a database)
-const users = [
-  // Example user for testing
-  { username: 'johnDoe', password: 'password123' },
-];
+// CORS setup - Allow frontend to make requests from localhost:5173
+app.use(cors({
+  origin: 'http://localhost:5173',  // Allow only this origin (your frontend URL)
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow GET, POST, OPTIONS methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  credentials: true,  // Allow cookies and credentials to be sent along with requests
+}));
 
-// Endpoint for login
-app.post('/api/auth/login', (req, res) => {
-  const { username, password } = req.body;
+// Handle preflight OPTIONS requests for CORS (for browsers sending non-simple requests)
+app.options('*', cors());
 
-  const user = users.find((user) => user.username === username);
-  if (user && user.password === password) {
-    // If username and password match, generate a "token" (simplified for now)
-    const token = `token-${user.username}`;
+// Serve static content (public folder)
+app.use(express.static('public'));  // Serve your frontend files from the 'public' folder
 
-    // Send the token back as a response
-    res.json({ token, username: user.username });
-  } else {
-    res.status(401).json({ msg: 'Invalid username or password' });
+// API Routes
+const apiRouter = express.Router();
+app.use(`/api`, apiRouter);
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+
+// Create a new user
+apiRouter.post('/auth/create', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res.status(400).send({ msg: 'Username and password are required' });
+    }
+
+    const existingUser = await DB.getUser(username);
+    if (existingUser) {
+      return res.status(409).send({ msg: 'Username already taken' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash password before storing
+
+    const newUser = await DB.createUser(username, hashedPassword);
+
+    setAuthCookie(res, newUser.token);
+
+    res.status(201).send({ msg: 'User created successfully', userId: newUser._id });
+
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).send({ msg: 'Server error. Please try again.' });
   }
 });
 
-// Your other backend routes go here
+// Helper function to set authentication cookie
+function setAuthCookie(res, token) {
+  res.cookie(authCookieName, token, {
+    maxAge: 30 * 24 * 60 * 60 * 1000,  // Cookie valid for 30 days
+    httpOnly: true,  // Make cookie accessible only by the server (not client-side JS)
+    secure: process.env.NODE_ENV === 'production',  // Only set secure cookie in production
+  });
+}
 
-app.listen(3000, () => {
-  console.log(`Listening on port 3000`);
-});
-
-
+app.listen(port, () => console.log(`App running on http://localhost:${port}`));

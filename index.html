@@ -1,4 +1,4 @@
-<!-- Frontend (index.html) -->
+<!-- index.html  to log in-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,10 +14,11 @@
       <p class="creator-name">Created by Sophia Bushman</p>
       <a href="browse.html">BROWSE</a>
     </header>
+
     <main>
       <section id="login-section">
         <h2>Log in to your account</h2>
-        <form id="login-form" method="post" action="#">
+        <form id="login-form">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" required />
 
@@ -28,15 +29,10 @@
         </form>
 
         <button id="create-account-btn">Create Account</button>
-        <p id="error-message" style="color: red; display: none;">
-          Invalid username or password.
-        </p>
+        <p id="error-message" style="color: red; display: none;">No account found.</p>
       </section>
-      <div id="quote-container">
-        <p id="quote">Loading</p>
-        <p id="quote-author">Quote of the Day</p>
-      </div>
     </main>
+
     <footer>
       <section id="about">
         <p>
@@ -46,7 +42,9 @@
         <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
       </section>
     </footer>
+
     <script src="index.js" defer></script>
   </body>
 </html>
+
 
