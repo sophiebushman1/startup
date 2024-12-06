@@ -19,17 +19,19 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Functions to interact with the database
+
+// Get a user by username
 async function getUser(username) {
   return await User.findOne({ username });
 }
 
-// This is where you define createUser
+// Create a new user
 async function createUser(username, password) {
   try {
     // Create a new user document
     const user = new User({
       username,
-      password, // In your actual implementation, you might want to hash the password before storing it
+      password, // Store hashed password
     });
 
     // Save the user to the database

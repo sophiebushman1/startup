@@ -21,8 +21,8 @@
         const errorMessage = document.getElementById('error-message');
         
         createAccountForm.addEventListener('submit', (event) => {
-          event.preventDefault(); // Prevent form from submitting normally
-          
+          event.preventDefault();  // Prevent form submission
+
           const username = document.getElementById('username').value;
           const password = document.getElementById('password').value;
 
@@ -40,7 +40,7 @@
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username, password }),
-            credentials: 'include',  // Include cookies if necessary (for sessions/auth)
+            credentials: 'include',  // Ensure cookies are included in the request
           })
           .then((response) => {
             if (!response.ok) {
@@ -51,7 +51,7 @@
             return response.json();
           })
           .then((data) => {
-            // User created successfully
+            // Account created successfully
             alert('Account created successfully!');
             window.location.href = 'index.html';  // Redirect to login page
           })

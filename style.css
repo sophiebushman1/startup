@@ -6,15 +6,15 @@
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace; /* Courier or similar font */
-    background-color: #b2f2e9; /* Light teal background */
+    font-family: 'Courier New', Courier, monospace; 
+    background-color: #b2f2e9; 
     color: #333;
     line-height: 1.6;
 }
     
 #quote-container {
-    display: block; /* Ensure it's displayed */
-    margin-top: 20px; /* Optional, for spacing */
+    display: block; 
+    margin-top: 20px; 
   }
   
   #quote {
@@ -53,12 +53,12 @@ body {
   #login-section {
     
     
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    text-align: center; /* Ensure text inside elements is centered */
-    width: 50%; /* Set the width */
+    justify-content: center; /* vertically */
+    align-items: center; /*horizontally */
+    text-align: center; 
+    width: 50%; 
     
-    margin: 0 auto; /* Center the section horizontally on the page */
+    margin: 0 auto; 
   }
 
 h1, h2, h3 {
@@ -71,36 +71,36 @@ h2 {
     text-align: center;
 }
 
-/* Container to center the content and limit the width */
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Header for branding */
+
 header {
-    background-color: #ffccdd; /* Pastel bright pink */
+    background-color: #ffccdd; 
     color: #fff;
     padding: 20px 0;
     text-align: center;
     font-size: 24px;
     border-bottom: 4px solid #ff99aa;
-    margin-left:0px; /* Slightly darker pink border for accent */
+    margin-left:0px; /*  accent */
 }
 
 a {
-    color: #333; /* Override default link color */
+    color: #333; 
     text-decoration: none;
     font-weight: normal;
-    transition: all 0.3s ease; /* Glide effect for hover */
+    transition: all 0.3s ease; 
 }
 
 a:hover {
-    font-weight: bold; /* Make links bold when hovered */
+    font-weight: bold; 
 }
 
-/* Buttons styling */
+
 button {
     background-color: #ff4576;
     color: white;
@@ -110,7 +110,7 @@ button {
     border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
-    transition: all 0.3s ease; /* Glide effect for hover */
+    transition: all 0.3s ease; /* Glide effect - hover */
     margin-left: auto;
     
     
@@ -119,10 +119,10 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; /* Darker blue - hover */
 }
 
-/* Form styles for consistency */
+
 form {
     margin-top: 20px;
     background-color: #fff;

@@ -1,74 +1,93 @@
-const cookieParser = require('cookie-parser');
-const bcrypt = require('bcrypt');
+// index.js (Backend)
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const User = require('./models/User');  // Assuming you have a User model defined in models/User.js
+
 const app = express();
-const DB = require('./database.js');  // Assuming you have a database.js module for DB logic
+const PORT = 3000;
 
-const authCookieName = 'token';
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+// Middleware setup
+app.use(cors({ origin: 'http://localhost:5173', credentials: true })); // Ensure CORS is set up correctly for frontend
+app.use(bodyParser.json()); // Parse JSON request bodies
 
-// JSON body parsing middleware
-app.use(express.json());
-app.use(cookieParser());
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/startup', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Error connecting to MongoDB:', err));
 
-// CORS setup - Allow frontend to make requests from localhost:5173
-app.use(cors({
-  origin: 'http://localhost:5173',  // Allow only this origin (your frontend URL)
-  methods: ['GET', 'POST', 'OPTIONS'], // Allow GET, POST, OPTIONS methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
-  credentials: true,  // Allow cookies and credentials to be sent along with requests
-}));
-
-// Handle preflight OPTIONS requests for CORS (for browsers sending non-simple requests)
-app.options('*', cors());
-
-// Serve static content (public folder)
-app.use(express.static('public'));  // Serve your frontend files from the 'public' folder
-
-// API Routes
-const apiRouter = express.Router();
-app.use(`/api`, apiRouter);
-
-// Root route
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
-
-// Create a new user
-apiRouter.post('/auth/create', async (req, res) => {
-  try {
+// Create User Route (POST /api/auth/create)
+app.post('/api/auth/create', async (req, res) => {
     const { username, password } = req.body;
+
     if (!username || !password) {
-      return res.status(400).send({ msg: 'Username and password are required' });
+        return res.status(400).json({ msg: 'Username and password are required.' });
     }
 
-    const existingUser = await DB.getUser(username);
-    if (existingUser) {
-      return res.status(409).send({ msg: 'Username already taken' });
+    try {
+        // Check if the user already exists
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.status(400).json({ msg: 'Username already taken.' });
+        }
+
+        // Hash the password before storing it
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create a new user in the database
+        const user = new User({
+            username,
+            password: hashedPassword
+        });
+        await user.save();
+
+        // Return success response
+        res.status(201).json({ msg: 'Account created successfully!' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error creating account.' });
     }
-
-    const hashedPassword = await bcrypt.hash(password, 10); // Hash password before storing
-
-    const newUser = await DB.createUser(username, hashedPassword);
-
-    setAuthCookie(res, newUser.token);
-
-    res.status(201).send({ msg: 'User created successfully', userId: newUser._id });
-
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).send({ msg: 'Server error. Please try again.' });
-  }
 });
 
-// Helper function to set authentication cookie
-function setAuthCookie(res, token) {
-  res.cookie(authCookieName, token, {
-    maxAge: 30 * 24 * 60 * 60 * 1000,  // Cookie valid for 30 days
-    httpOnly: true,  // Make cookie accessible only by the server (not client-side JS)
-    secure: process.env.NODE_ENV === 'production',  // Only set secure cookie in production
-  });
-}
+// Login Route (POST /api/auth/login)
+app.post('/api/auth/login', async (req, res) => {
+    const { username, password } = req.body;
 
-app.listen(port, () => console.log(`App running on http://localhost:${port}`));
+    if (!username || !password) {
+        return res.status(400).json({ msg: 'Username and password are required.' });
+    }
+
+    try {
+        // Find the user by username
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(401).json({ msg: 'Invalid credentials.' });
+        }
+
+        // Check if the password matches
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ msg: 'Invalid credentials.' });
+        }
+
+        // Generate JWT token
+        const token = jwt.sign({ id: user._id, username: user.username }, 'your_jwt_secret', { expiresIn: '1h' });
+
+        // Send response with token
+        res.json({ msg: 'Login successful!', token });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error logging in.' });
+    }
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});

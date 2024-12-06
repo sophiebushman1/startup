@@ -1,10 +1,9 @@
-// FRONTEND index.js
-
+// index.js (Frontend)
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('login-form');
   const errorMessage = document.getElementById('error-message');
   const createAccountBtn = document.getElementById('create-account-btn');
-  
+
   // Handle form submission for login
   loginForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
@@ -29,13 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username, password }),  // Send username and password
+      credentials: 'include', // Ensure cookies are included in the request
     })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Login failed, please check your credentials.');
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       if (data.token) {
         // On successful login, save the token and redirect to browse page
@@ -55,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Create Account button click handler (if you want to implement account creation later)
+  // Create Account button click handler (redirects to account creation page)
   createAccountBtn.addEventListener('click', () => {
     window.location.href = 'createaccount.html'; // Redirect to account creation page
   });

@@ -1,53 +1,79 @@
-// src/App.jsx
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './components/Home';
-import Shop from './components/Shop';
-import About from './components/About';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('./models/User');
 
-function App() {
-    const [message, setMessage] = useState(''); // State to store the backend message
+const app = express();
+const PORT = 3000;
 
-    useEffect(() => {
-        // Fetch message from the backend
-        fetch('/api/hello')
-            .then((response) => response.json())
-            .then((data) => {
-                setMessage(data.message); // Set the message to state
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []); // Empty dependency array to run the fetch only once when the component mounts
+app.use(cors());
+app.use(bodyParser.json());
 
-    return (
-        <Router>
-            <div>
-                {/* Navigation Links */}
-                <nav>
-                    <Link to="/">Home</Link>
-                    <Link to="/shop">Shop</Link>
-                    <Link to="/about">About</Link>
-                </nav>
+mongoose.connect('mongodb://localhost:27017/startup', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Error connecting to MongoDB:', err));
 
-                {/* Route Definitions */}
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/about" element={<About />} />
-                </Routes>
+app.post('/api/auth/create', async (req, res) => {
+    const { username, password } = req.body;
 
-                {/* Display the backend message */}
-                {message && <h1>{message}</h1>} {/* Only render if message is available */}
+    if (!username || !password) {
+        return res.status(400).json({ msg: 'Username and password are required.' });
+    }
 
-                {/* Footer */}
-                <footer>
-                    <p>Your Name</p>
-                    <a href="https://github.com/yourusername/yourrepository" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                </footer>
-            </div>
-        </Router>
-    );
-}
+    try {
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res.status(400).json({ msg: 'Username already taken.' });
+        }
 
-export default App;
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new User({
+            username,
+            password: hashedPassword
+        });
+        await user.save();
+
+        res.status(201).json({ msg: 'Account created successfully!' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error creating account.' });
+    }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ msg: 'Username and password are required.' });
+    }
+
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(401).json({ msg: 'Invalid credentials.' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ msg: 'Invalid credentials.' });
+        }
+
+        const token = jwt.sign({ id: user._id, username: user.username }, 'your_jwt_secret', { expiresIn: '1h' });
+
+        res.json({ msg: 'Login successful!', token });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error logging in.' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
