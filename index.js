@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorMessage = document.getElementById('error-message');
   const createAccountBtn = document.getElementById('create-account-btn');
 
+  // Define the base URL based on the environment (development or production)
+  const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:3000'  // Local development server
+    : 'https://byucs260.click'; // Production server URL
+
   // Handle form submission for login
   loginForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Send login request to backend
-    fetch('http://localhost:3000/api/auth/login', {
+    fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
