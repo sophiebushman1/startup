@@ -1,4 +1,3 @@
-// index.js (Frontend)
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('login-form');
   const errorMessage = document.getElementById('error-message');
@@ -32,9 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then((response) => response.json())
     .then((data) => {
-      if (data.token) {
-        // On successful login, save the token and redirect to browse page
-        localStorage.setItem('token', data.token); // Store token in localStorage
+      if (data.msg === 'Login successful!') {
+        // On successful login, redirect to browse page
         window.location.href = 'browse.html'; // Redirect to browse page
       } else {
         // If login failed, show error message
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch((error) => {
       console.error('Error during login:', error);
-      // Show a generic error message to the user
       errorMessage.textContent = 'No account found. Please try again.';
       errorMessage.style.display = 'block';
     });

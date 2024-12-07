@@ -1,4 +1,3 @@
-// index.js (Backend)
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -6,13 +5,15 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('./models/User');  // Assuming you have a User model defined in models/User.js
+const cookieParser = require('cookie-parser');  // Add cookie-parser
 
 const app = express();
 const PORT = 3000;
 
 // Middleware setup
-app.use(cors({ origin: 'http://localhost:5173', credentials: true })); // Ensure CORS is set up correctly for frontend
+app.use(cors({ origin: 'http://localhost:5173', credentials: true })); // Allow frontend to access backend
 app.use(bodyParser.json()); // Parse JSON request bodies
+app.use(cookieParser()); // Parse cookies
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/startup', {
@@ -79,12 +80,29 @@ app.post('/api/auth/login', async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ id: user._id, username: user.username }, 'your_jwt_secret', { expiresIn: '1h' });
 
-        // Send response with token
-        res.json({ msg: 'Login successful!', token });
+        // Send the JWT token as an HTTP-only cookie
+        res.cookie('authToken', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 3600000 }); // 1 hour expiry
+        res.json({ msg: 'Login successful!' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ msg: 'Error logging in.' });
     }
+});
+
+// Protected Route Example (GET /api/auth/protected)
+app.get('/api/auth/protected', (req, res) => {
+    const token = req.cookies.authToken;
+
+    if (!token) {
+        return res.status(401).json({ msg: 'Not authenticated.' });
+    }
+
+    jwt.verify(token, 'your_jwt_secret', (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ msg: 'Token invalid or expired.' });
+        }
+        res.json({ msg: 'Protected content accessed.', user: decoded });
+    });
 });
 
 // Start server
