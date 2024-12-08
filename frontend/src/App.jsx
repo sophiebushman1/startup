@@ -1,8 +1,8 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import CreateAccount from './CreateAccount';  // Import CreateAccount component
-import Login from './Login';  // Import Login component
+import CreateAccount from './createaccount';  // Import CreateAccount component
+import Login from './login';  // Import Login component
 import Browse from './Browse';  // Import the Browse component if needed
 
 const App = () => {
