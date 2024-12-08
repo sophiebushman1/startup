@@ -1,67 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Account</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Create Your Account</h1>
-    <form id="create-account-form">
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Create</button>
-      <div id="error-message" style="display: none;"></div>
-    </form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - Cocojewel Startup</title>
+  <link rel="icon" href="myicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Cocojewel</h1>
+  <p class="creator-name">Created by Sophia Bushman</p>
+  <a href="browse.html">BROWSE</a>
+</header>
+
+<main>
+  <section id="create-account-section">
+    <h2>Create a new account</h2>
     
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const createAccountForm = document.getElementById('create-account-form');
-        const errorMessage = document.getElementById('error-message');
-        
-        createAccountForm.addEventListener('submit', (event) => {
-          event.preventDefault();  // Prevent form submission
+    <!-- Form for creating a new account -->
+    <form id="create-account-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required placeholder="Enter your password">
 
-          const username = document.getElementById('username').value;
-          const password = document.getElementById('password').value;
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
 
-          // Validate inputs
-          if (!username || !password) {
-            errorMessage.textContent = 'Please provide both username and password.';
-            errorMessage.style.display = 'block';
-            return;
-          }
+      <button type="submit">Create Account</button>
+    </form>
 
-          // Send create account request
-          fetch('http://localhost:3000/api/auth/create', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-            credentials: 'include',  // Ensure cookies are included in the request
-          })
-          .then((response) => {
-            if (!response.ok) {
-              return response.json().then((data) => {
-                throw new Error(data.msg || 'Error creating account.');
-              });
-            }
-            return response.json();
-          })
-          .then((data) => {
-            // Account created successfully
-            alert('Account created successfully!');
-            window.location.href = 'index.html';  // Redirect to login page
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            errorMessage.textContent = error.message || 'Something went wrong. Please try again.';
-            errorMessage.style.display = 'block';
-          });
-        });
-      });
-    </script>
-  </body>
+    <p id="error-message" style="color: red; display: none;">Please fill in all fields correctly.</p>
+    <p>Already have an account? <a href="index.html">Log in here</a></p>
+  </section>
+</main>
+
+<footer>
+  <section id="about">
+    <p>At Cocojewel, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more!</p>
+    <a href="policy.html">Waterproof policy</a>
+    <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
+  </section>
+</footer>
+
+<script src="createaccount.js" defer></script>
+</body>
 </html>
