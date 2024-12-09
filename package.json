@@ -1,0 +1,26 @@
+{
+  "name": "start-up",
+  "version": "1.0.0",
+  "description": "### Design of website: ![Design of jewelry website](images/design.png) ### Diagram of user and backend interaction: ![Diagram](images/diagram.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
+    "dev": "vite",
+    "start": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "mongodb": "^4.12.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
