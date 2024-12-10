@@ -1,11 +1,10 @@
+// src/app.jsx
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-
-
+import { CreateAccount } from './login/createAccount'; // Import CreateAccount
 import { Policy } from './policy/policy';
 import { AuthState } from './login/authState';
-
 import './app.css';
 
 function App() {
@@ -17,19 +16,13 @@ function App() {
     <BrowserRouter>
       <div className='body bg-dark text-light'>
         <header className='container-fluid'>
-          
-            
-            <menu className='menu'>
-              
-              
-              
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='policy'>
-                  Policy
-                </NavLink>
-              </li>
-            </menu>
-          
+          <menu className='menu'>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to='policy'>
+                Policy
+              </NavLink>
+            </li>
+          </menu>
         </header>
 
         <Routes>
@@ -47,8 +40,7 @@ function App() {
             }
             exact
           />
-           
-          
+          <Route path='/createAccount' element={<CreateAccount />} /> {/* Add Create Account route */}
           <Route path='/policy' element={<Policy />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

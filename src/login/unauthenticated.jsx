@@ -1,12 +1,14 @@
+// src/login/unauthenticated.jsx
 import React from 'react';
-
 import Button from 'react-bootstrap/Button';
 import { MessageDialog } from './messageDialog';
+import { useNavigate } from 'react-router-dom';
 
 export function Unauthenticated(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
+  const navigate = useNavigate();
 
   async function loginUser() {
     loginOrCreate(`/api/auth/login`);
@@ -48,10 +50,12 @@ export function Unauthenticated(props) {
           Login
         </Button>
         <Button variant='secondary' onClick={() => createUser()} disabled={!userName || !password}>
-          Create
+          Create Account
+        </Button>
+        <Button variant='link' onClick={() => navigate('/createAccount')}>
+          Create Account (New User)
         </Button>
       </div>
-
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
   );

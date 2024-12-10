@@ -1,10 +1,13 @@
+// src/login/login.jsx
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
 export function Login({ userName, authState, onAuthChange }) {
+  const navigate = useNavigate();
+
   return (
     <main className='container-fluid bg-secondary text-center'>
       <div>
@@ -21,6 +24,9 @@ export function Login({ userName, authState, onAuthChange }) {
           />
         )}
       </div>
+      <Button variant='link' onClick={() => navigate('/createAccount')}>
+        Create Account
+      </Button>
     </main>
   );
 }
