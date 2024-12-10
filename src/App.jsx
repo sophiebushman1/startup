@@ -3,7 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 
 
-import { About } from './about/about';
+import { Policy } from './policy/policy';
 import { AuthState } from './login/authState';
 
 import './app.css';
@@ -18,16 +18,14 @@ function App() {
       <div className='body bg-dark text-light'>
         <header className='container-fluid'>
           
-            <div className='navbar-brand'>
-              Created <sup></sup>
-            </div>
-            <menu className='navbar-nav'>
+            
+            <menu className='menu'>
               
               
               
               <li className='nav-item'>
-                <NavLink className='nav-link' to='about'>
-                  Created by Sophie Taylor
+                <NavLink className='nav-link' to='policy'>
+                  Policy
                 </NavLink>
               </li>
             </menu>
@@ -51,7 +49,7 @@ function App() {
           />
            
           
-          <Route path='/about' element={<About />} />
+          <Route path='/policy' element={<Policy />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 

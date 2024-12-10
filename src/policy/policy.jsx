@@ -1,7 +1,7 @@
 import React from 'react';
-import './about.css';
+import './policy.css';
 
-export function About(props) {
+export function Policy(props) {
   const [imageUrl, setImageUrl] = React.useState('data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=');
   const [quote, setQuote] = React.useState('Loading...');
   const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');

@@ -14,6 +14,8 @@ p {
   animation-name: slidein;
   animation-iteration-count: infinite;
 }
+className='navbar-nav'>
+makes a bar
 
 @keyframes slidein {
   from {
