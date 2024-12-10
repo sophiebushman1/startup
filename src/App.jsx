@@ -1,29 +1,75 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import CreateAccount from './createaccount';  // Import CreateAccount component
-import Login from './login';  // Import Login component
-import Browse from './Browse';  // Import the Browse component if needed
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/login';
 
-const App = () => {
+
+import { About } from './about/about';
+import { AuthState } from './login/authState';
+
+import './app.css';
+
+function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link> | 
-        <Link to="/signup">Sign Up</Link> | 
-        <Link to="/login">Login</Link> |
-        <Link to="/browse">Browse</Link> {/* Only if Browse is part of the app */}
-      </nav>
+    <BrowserRouter>
+      <div className='body bg-dark text-light'>
+        <header className='container-fluid'>
+          
+            <div className='navbar-brand'>
+              Created <sup></sup>
+            </div>
+            <menu className='navbar-nav'>
+              
+              
+              
+              <li className='nav-item'>
+                <NavLink className='nav-link' to='about'>
+                  Created by Sophie Taylor
+                </NavLink>
+              </li>
+            </menu>
+          
+        </header>
 
-      <Routes>
-        <Route path="/" element={<h1>Welcome to the Homepage!</h1>} />
-        <Route path="/browse" element={<Browse />} />  {/* Route for the Browse page */}
-        <Route path="/signup" element={<CreateAccount />} /> {/* Route for CreateAccount */}
-        <Route path="/login" element={<Login />} /> {/* Route for Login */}
-      </Routes>
-    </div>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            }
+            exact
+          />
+           
+          
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+
+        <footer className='bg-dark text-dark text-muted'>
+          <div className='container-fluid'>
+            <span className='text-reset'>Created by Sophia Bushman</span>
+            <a className='text-reset' href='https://github.com/sophiebushman1/startup'>
+              Github Link
+            </a>
+          </div>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
-};
+}
+
+function NotFound() {
+  return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+}
 
 export default App;
-
-
