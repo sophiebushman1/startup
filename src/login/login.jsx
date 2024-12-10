@@ -25,9 +25,7 @@ export function Login({ userName, authState, onAuthChange }) {
           />
         )}
       </div>
-      <Button variant='link' onClick={() => navigate('/createAccount')}>
-        Create Account
-      </Button>
+      
     </main>
   );
 }
