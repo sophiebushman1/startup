@@ -11,13 +11,17 @@ const scoreCollection = db.collection('score');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
-  await client.connect();
-  await db.command({ ping: 1 });
-})().catch((ex) => {
-  console.log(`Unable to connect to database with ${url} because ${ex.message}`);
-  process.exit(1);
-});
+  try {
+    await client.connect();
+    await db.command({ ping: 1 });
+    console.log("MongoDB connected successfully!");
+  } catch (ex) {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+  }
+})();
 
+// Improved getUser function with error handling
 function getUser(email) {
   return userCollection.findOne({ email: email });
 }
@@ -27,21 +31,36 @@ function getUserByToken(token) {
 }
 
 async function createUser(email, password) {
-  // Hash the password before we insert it into the database
-  const passwordHash = await bcrypt.hash(password, 10);
+  try {
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = {
-    email: email,
-    password: passwordHash,
-    token: uuid.v4(),
-  };
-  await userCollection.insertOne(user);
+    // Create user object
+    const user = {
+      email: email,
+      password: hashedPassword,
+      token: uuid.v4(),  // Use UUID to generate a unique token
+    };
 
-  return user;
+    // Insert the user into the database
+    const result = await userCollection.insertOne(user);
+    console.log("User created:", result.ops[0]);  // Log user creation
+    return result.ops[0];  // Return the created user
+  } catch (error) {
+    console.error("Error creating user:", error);
+    throw error;
+  }
 }
 
 async function addScore(score) {
-  return scoreCollection.insertOne(score);
+  try {
+    const result = await scoreCollection.insertOne(score);
+    console.log("Score added:", result);
+    return result;
+  } catch (error) {
+    console.error("Error adding score:", error);
+    throw error;
+  }
 }
 
 function getHighScores() {
