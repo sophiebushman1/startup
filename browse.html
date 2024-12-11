@@ -1,53 +1,43 @@
 <main>
-  <body>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <body>
+      <head>
+          <link rel="stylesheet" href="browse.css">
+      </head>
+      
       <header>
           <h1>Cocojewel</h1>
-          <h2>Welcome "USER"</h2>
+          <h2>Welcome <span id="user-name">USER</span></h2> <!-- Placeholder for the username -->
           <nav>
-              <a href="">Bestsellers</a>
-              <a href="">Bracelets</a>
-              <a href="">Rings</a>
-              <a href="">Necklaces</a>
-              <a href="">Earrings</a>
-              <a href="">Accessories</a>
+              
               <a href="cart.html">Cart & Checkout</a>
           </nav>
-          <div class="search-bar">
-              <input type="text" placeholder="Search">
-              <button type="button">Search</button>
-          </div>
       </header>
-  
+    
       <section id="products">
-          <h3>Browse Our Products</h3>
           <div class="product-grid">
               <div class="product-item">
                   <img src="https://tresorsdestbarth.com/wp-content/uploads/2022/06/double-wrap-leather-bracelet-with-turquoise-and-solid-18k-gold-beads-and-clasp-rare-turquoise-from-arizona-jewelry-from-st-barth-island-62aa47e3-400x400.jpg" alt="Bracelet" width="150">
-                  <p>Bracelet description - $PRICE</p>
+                  <p>Bracelet description - $15</p>
                   <button>Add to Cart</button>
               </div>
               <div class="product-item">
                   <img src="https://www.yinahawaii.com/cdn/shop/products/65b956c1a5efcf8dcacabd2c_1024x1024.png?v=1707544202" alt="Ring" width="150">
-                  <p>Earring description - $PRICE</p>
+                  <p>Earring description - $20</p>
                   <button>Add to Cart</button>
               </div>
               <div class="product-item">
                   <img src="https://i.etsystatic.com/29155269/r/il/d059fd/5926528134/il_fullxfull.5926528134_dv8m.jpg" alt="Necklace" width="150">
-                  <p>Necklace description - $PRICE</p>
+                  <p>Necklace description - $25</p>
                   <button>Add to Cart</button>
               </div>
-              
           </div>
       </section>
-  
+    
       <footer>
           <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
           <p>Created by Sophia Bushman</p>
       </footer>
-  
+    
       <style>
           header nav {
               margin-top: 10px;
@@ -57,10 +47,6 @@
               margin-right: 15px;
               text-decoration: none;
               color: #333;
-          }
-  
-          .search-bar {
-              margin-top: 10px;
           }
   
           #products {
@@ -101,5 +87,17 @@
               background-color: #aaeeff;
           }
       </style>
-  </body>
+    
+      <script>
+          // Assuming the logged-in username is stored in localStorage
+          // or is accessible via another method (e.g., via props in a React app)
+          const username = localStorage.getItem('userName');  // You can replace this with the actual username retrieval logic
+          if (username) {
+              document.getElementById('user-name').textContent = username;
+          } else {
+              document.getElementById('user-name').textContent = 'Guest';
+          }
+      </script>
+    </body>
   </main>
+  

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
+import './unauthenticated.css'
 
 export function Login({ userName, authState, onAuthChange }) {
   const navigate = useNavigate();

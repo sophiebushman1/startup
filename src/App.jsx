@@ -5,8 +5,12 @@ import React from 'react';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
+
 import { CreateAccount } from './login/createAccount'; // Import CreateAccount
 import { Policy } from './policy/policy';
+
+
+
 
 import { AuthState } from './login/authState';
 import './app.css';
@@ -22,9 +26,7 @@ function App() {
         <header className='container-fluid'>
           <menu className='menu'>
             <li className='nav-item'>
-              <NavLink className='nav-link' to='policy'>
-                Policy
-              </NavLink>
+              
             </li>
           </menu>
         </header>
@@ -50,12 +52,10 @@ function App() {
         </Routes>
 
         <footer className='bg-dark text-dark text-muted'>
-          <div className='container-fluid'>
-            <span className='text-reset'>Created by Sophia Bushman</span>
-            <a className='text-reset' href='https://github.com/sophiebushman1/startup'>
-              Github Link
-            </a>
-          </div>
+        <p>At Cocojewel, you are guaranteed to find stylish and beach-ready looks from rings, bracelets, necklaces, earrings, and more!</p>
+        <a href="/policy">Waterproof policy</a>
+        <a href="https://github.com/sophiebushman1/startup" target="_blank" rel="noopener noreferrer">My Github Repo</a>
+          
         </footer>
       </div>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { MessageDialog } from './messageDialog';
 import { useNavigate } from 'react-router-dom';
+import './CAstyle.css'; // Import your CSS here
 
 export function Unauthenticated(props) {
   const [userName, setUserName] = React.useState(props.userName);
@@ -39,20 +40,18 @@ export function Unauthenticated(props) {
     <>
       <div>
         <div className='input-group mb-3'>
-          <span className='input-group-text'>Username: </span>
-          <input className='form-control' type='text' value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='enter username here' />
+          <span className='input-group-text'>Email: </span>
+          <input className='form-control' type='text' value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='enter' />
         </div>
         <div className='input-group mb-3'>
           <span className='input-group-text'>Password:  </span>
-          <input className='form-control' type='password' onChange={(e) => setPassword(e.target.value)} placeholder='enter password here' />
+          <input className='form-control' type='password' onChange={(e) => setPassword(e.target.value)} placeholder='enter' />
         </div>
         <Button variant='primary' onClick={() => loginUser()} disabled={!userName || !password}>
           Login
         </Button>
         
-        <Button variant='link' onClick={() => navigate('/createAccount')}>
-          Create Account
-        </Button>
+        
       </div>
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
