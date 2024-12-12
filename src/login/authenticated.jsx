@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // If you still want to use navigation
-
 import Button from 'react-bootstrap/Button';
-
 import './authenticated.css';
 
 // Updated function to navigate to browse.html
@@ -38,9 +36,10 @@ export function Authenticated(props) {
       </Button>
 
       {/* Browse button */}
-      <Button variant="primary" onClick={goToBrowse}>
-        Browse Our Products
+      <Button variant='primary' onClick={goToBrowse}>
+        Browse Products
       </Button>
     </div>
   );
 }
+

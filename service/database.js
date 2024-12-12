@@ -44,8 +44,9 @@ async function createUser(email, password) {
 
     // Insert the user into the database
     const result = await userCollection.insertOne(user);
-    console.log("User created:", result.ops[0]);  // Log user creation
-    return result.ops[0];  // Return the created user
+    
+    console.log("User created:", result);  // Log user creation
+    return result;  // Return the created user
   } catch (error) {
     console.error("Error creating user:", error);
     throw error;

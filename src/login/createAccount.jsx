@@ -109,7 +109,7 @@ export function CreateAccount(props) {
           {/* Display error message */}
           {displayError && <MessageDialog message={displayError} />}
           
-          <p>Already have an account? <a href="/">Log in here</a></p>
+          <p>Have an account? <a href="/">Log in here</a></p>
         </section>
       </main>
 

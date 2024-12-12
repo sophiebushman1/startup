@@ -1,44 +1,89 @@
-<main>
-    <link rel="icon" href="bracelet.png" type="image/x-icon">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocojewel - Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
 <body>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
     <header>
         <h1>Cocojewel</h1>
-        <h2>Welcome "USER"</h2>
-        
+        <h2>Your Cart</h2>
     </header>
-    <nav>
-        
-    </nav>
-    <section id="cart-details">
-        <h3>Your Shopping Cart</h3>
-        
-        <div id="cart-items">
-            <p>Your cart is empty.</p>
-        </div>
 
-        
-        <div id="cart-total">
-            <h4>Total: $0.00</h4>
-        </div>
+    <main>
+        <section id="cart-summary">
+            <h3>Cart Summary</h3>
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Cart items will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <p id="total-price">Total: $0.00</p>
+        </section>
 
-        
-        <div id="checkout">
-            <button onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
-        </div>
+        <section id="payment-options">
+            <h3>Payment Options</h3>
+            <form>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
 
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </form>
+        </section>
         
-        <div id="share-cart">
-            <h4>Want to share your cart with a friend?</h4>
-            <button onclick="window.location.href='share.html'">Share Cart</button>
-        </div>
-    </section>
+        <div id="paypal-button-container"></div>
+
+        <button id="confirm-button">Confirm Purchase</button>
+    </main>
 
     <footer>
-        <a href="https://github.com/sophiebushman1/startup">My Github Repo </a>
+        <a href="https://github.com/sophiebushman1/startup">My Github Repo</a>
         <p>Created by Sophia Bushman</p>
     </footer>
+
+    <script>
+        // Function to render cart items dynamically
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartTable = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
+            const totalPriceElement = document.getElementById('total-price');
+
+            // Clear the current cart table
+            cartTable.innerHTML = '';
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const row = cartTable.insertRow();
+                row.innerHTML = `
+                    <td>${item.productName}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${item.productPrice}</td>
+                    <td>$${(item.productPrice * item.quantity).toFixed(2)}</td>
+                `;
+                total += item.productPrice * item.quantity;
+            });
+
+            // Update total price
+            totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        // Render cart when the page loads
+        window.onload = renderCart;
+    </script>
 </body>
-</main>
+</html>

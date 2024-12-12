@@ -3,7 +3,6 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { MessageDialog } from './messageDialog';
 import { useNavigate } from 'react-router-dom';
-import './CAstyle.css'; // Import your CSS here
 
 export function Unauthenticated(props) {
   const [userName, setUserName] = React.useState(props.userName);
@@ -51,7 +50,9 @@ export function Unauthenticated(props) {
           Login
         </Button>
         
-        
+        <Button variant='link' onClick={() => navigate('/createAccount')}>
+          Create Account
+        </Button>
       </div>
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </>
