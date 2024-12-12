@@ -1,23 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { MessageDialog } from './messageDialog';
 import './CAstyle.css'; // Import your CSS here
-
 
 export function CreateAccount(props) {
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [displayError, setDisplayError] = React.useState(null);
-  const [successMessage, setSuccessMessage] = React.useState(null); // State for success message
+  const [message, setMessage] = React.useState(null); // Simplified message state (Success only)
 
   const navigate = useNavigate();
 
   // Function to create the user
   async function createUser() {
     if (password !== confirmPassword) {
-      setDisplayError("Passwords don't match.");
+      setMessage({ type: 'error', text: "Passwords don't match." });
       return;
     }
     try {
@@ -25,17 +22,18 @@ export function CreateAccount(props) {
       console.log("Response from backend:", response); // Log full response
 
       if (response?.status === 200) {
-        // Show success message on user creation
-        setSuccessMessage(response?.msg || "Account created successfully! You can now log in.");
+        // If the backend returns status 200, we show success message
+        setMessage({ type: 'success', text: response?.msg || "Account created successfully! You can now log in." });
         setTimeout(() => {
           navigate('/'); // Optionally navigate to the login page after 2 seconds
         }, 2000);
       } else {
-        // Show error message if something goes wrong
-        setDisplayError(`⚠ Error: ${response?.msg || 'Something went wrong'}`);
+        // In case the backend status is not 200, display it as an error
+        setMessage({ type: 'error', text: response?.msg || 'Account creation failed. Please try again.' });
       }
     } catch (error) {
-      setDisplayError("An error occurred while creating the account. Please try again.");
+      // Handle the case where there was an error in fetching the API
+      setMessage({ type: 'error', text: "An error occurred while creating the account. Please try again." });
     }
   }
 
@@ -60,7 +58,6 @@ export function CreateAccount(props) {
       <header>
         <h1>Cocojewel</h1>
         <p className="creator-name">Created by Sophia Bushman</p>
-        
       </header>
 
       <main>
@@ -104,17 +101,19 @@ export function CreateAccount(props) {
             <Button onClick={createUser}>Create Account</Button>
           </form>
 
-          {/* Display success message */}
-          {successMessage && <MessageDialog message={successMessage} />}
-          {/* Display error message */}
-          {displayError && <MessageDialog message={displayError} />}
-          
+          {/* Display message (success or error) */}
+          {message && (
+            <div className={`message ${message.type}`}>
+              {message.text}
+            </div>
+          )}
+
           <p>Have an account? <a href="/">Log in here</a></p>
         </section>
       </main>
 
       <footer>
-        
+        {/* Add footer content if necessary */}
       </footer>
     </div>
   );

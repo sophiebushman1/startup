@@ -1,31 +1,162 @@
-.picture-box {
-  height: calc(100px + 1em);
-  margin-bottom: 1em;
-  padding: 0.5em;
-  background: rgb(86, 89, 93);
-  border-radius: 5px;
+/* Global Styles */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #a0eff6; /* Light teal background color */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.quote-box {
-  margin-top: 1em;
-  padding: 0.5em;
+/* Header */
+header {
+  background-color: #ff66b2; /* Bright light pink header */
+  color: white;
+  padding: 20px;
+  width: 100%; /* Ensures the header spans the full width */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10; /* Ensures it stays above other content */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+header h2 {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+/* Main Content Section */
+main {
+  margin-top: 200px; /* Adjust for fixed header */
+  padding: 20px;
+}
+
+/* Cart Summary Section */
+#cart-summary {
+  margin-top: 20px;
+}
+
+#cart-summary h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+#cart-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#cart-table th,
+#cart-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#cart-table th {
+  background-color: #ff66b2; /* Header for table */
+  color: white;
+  font-size: 16px;
+}
+
+#cart-table td {
+  text-align: center;
+  font-size: 14px;
+}
+
+#total-price {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Payment Section */
+#payment-options {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+#payment-options label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#payment-options input {
+  padding: 8px;
+  margin: 5px 0;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+  font-size: 14px;
+}
+
+/* Confirm Purchase Button */
+#confirm-button {
+  background-color: #ff66b2; /* Bright pink */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+#confirm-button:hover {
+  background-color: #e0559b; /* Slightly darker pink on hover */
+}
+
+/* Footer Styling */
+footer {
+  background-color: #003366; /* Darker blue background */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Quote Box Styling */
+#quote-section {
+  margin-top: 40px; /* Add space between policy and quote section */
+  padding: 20px;
+  background-color: #ff67e1; /* Brighter ocean blue background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .quote {
+  font-size: 1.4em;
+  font-family: 'Georgia', serif; /* Use a serif font for the quote */
   font-style: italic;
+  color: rgb(108, 142, 255); /* White text for the quote */
+  margin-bottom: 10px;
 }
 
 .author {
-  font-weight: bold;
-  text-align: right;
-}
-
-.author::before {
-  content: " - ";
-}
-
-#picture img {
-  width: 100%;
-  height: 100%;
+  font-size: 1.4em; /* Match the size of the quote text */
+  font-family: 'Georgia', serif; /* Same font as the quote */
+  font-style: italic; /* Same style as the quote */
+  color: rgb(108, 142, 255); /* White color for the author */
 }

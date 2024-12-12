@@ -1,60 +1,62 @@
+// src/policy/policy.jsx
 import React from 'react';
-import './policy.css';
+import './policy.css'; // Import any CSS if applicable
 
-export function Policy(props) {
-  const [imageUrl, setImageUrl] = React.useState('data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=');
+const Policy = () => {
   const [quote, setQuote] = React.useState('Loading...');
   const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
 
-  // We only want this to render the first time the component is created and so we provide an empty dependency list.
+  // Fetch random quote from the API on initial load
   React.useEffect(() => {
-    const random = Math.floor(Math.random() * 1000);
-    fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
-      .then((response) => response.json())
-      .then((data) => {
-        const containerEl = document.querySelector('#picture');
-
-        const width = containerEl.offsetWidth;
-        const height = containerEl.offsetHeight;
-        const apiUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}?grayscale`;
-        setImageUrl(apiUrl);
-      })
-      .catch();
-
     fetch('https://quote.cs260.click')
       .then((response) => response.json())
       .then((data) => {
         setQuote(data.quote);
         setQuoteAuthor(data.author);
       })
-      .catch();
+      .catch((error) => {
+        console.error('Error fetching quote:', error);
+        setQuote('Oops, something went wrong...');
+        setQuoteAuthor('unknown');
+      });
   }, []);
-
-  let imgEl = '';
-
-  if (imageUrl) {
-    imgEl = <img src={imageUrl} alt='stock background' />;
-  }
 
   return (
     <main className='container-fluid bg-secondary text-center'>
-      <div>
-        <div id='picture' className='picture-box'>
-          {imgEl}
-        </div>
+      <header>
+        <h1>Cocojewel</h1>
+        <h3>Waterproof Jewelry Policy</h3>
+      </header>
 
-        <p>Simon is a repetitive memory game where you follow the demonstrated color sequence until you make a mistake. The longer the sequence you repeat, the greater your score.</p>
-
+      <section>
+        <h4>Enjoy Your Beach Days with Confidence!</h4>
         <p>
-          The name Simon is a registered trademark of Milton-Bradley. Our use of the name and the game is for non-profit educational use only. No part of this code or application may be used outside
-          of that definition.
+          At Cocojewel, we create jewelry designed to keep up with your beach days and poolside fun.
+          Our water-resistant pieces can handle splashes, but a little care goes a long way in keeping them looking great.
         </p>
+      </section>
 
-        <div className='quote-box bg-light text-dark'>
-          <p className='quote'>{quote}</p>
-          <p className='author'>{quoteAuthor}</p>
-        </div>
+      <section>
+        <h4>Quick Tips for Keeping Your Jewelry in Top Shape:</h4>
+        <p>Saltwater & Chlorine: A quick rinse with fresh water after swimming helps prevent any damage.</p>
+        <p>Chemicals: Avoid lotions, sunscreen, and perfumes – they can dull the shine.</p>
+        <p>Storage: When you're not wearing it, keep your jewelry dry and in a safe spot.</p>
+      </section>
+
+      <section>
+        <p>
+          While our jewelry is water-resistant, remember that constant exposure to water (especially saltwater) can affect its appearance over time.
+        </p>
+        <p>Enjoy your pieces, but treat them with care to keep them shining bright!</p>
+      </section>
+
+      {/* Quote Box */}
+      <div className="quote-box bg-primary text-white mt-5 p-4">
+        <p className="quote">{quote}</p>
+        <p className="author">- {quoteAuthor}</p>
       </div>
     </main>
   );
 }
+
+export default Policy;
