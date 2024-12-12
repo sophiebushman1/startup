@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>Cocojewel</h1>
-        <h2>Your Cart</h2>
+        <h2>Your Cart <span id="share-tally">Shares: 0</span></h2> <!-- Display share tally here -->
     </header>
 
     <main>
@@ -29,6 +29,15 @@
                 </tbody>
             </table>
             <p id="total-price">Total: $0.00</p>
+        </section>
+
+        <section id="share-cart-section">
+            <!-- Share cart button and email input will appear here -->
+            <button id="share-cart-button">Share Cart with a Friend</button>
+            <div id="email-input-container" style="display: none;">
+                <input type="email" id="email-input" placeholder="Enter friend's email" required>
+                <button id="send-share-button">Send</button>
+            </div>
         </section>
 
         <section id="payment-options">
@@ -82,8 +91,38 @@
             totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
         }
 
-        // Render cart when the page loads
-        window.onload = renderCart;
+        // Function to update the share tally in localStorage and on the page
+        function updateShareTally() {
+            let shareCount = localStorage.getItem('shareTally') || 0;
+            shareCount = parseInt(shareCount) + 1;
+            localStorage.setItem('shareTally', shareCount);
+            document.getElementById('share-tally').textContent = `Shares: ${shareCount}`;
+        }
+
+        // Show the email input form when "Share Cart with a Friend" is clicked
+        document.getElementById('share-cart-button').addEventListener('click', function() {
+            document.getElementById('email-input-container').style.display = 'block';
+        });
+
+        // Handle the "Send" button click to update the share tally
+        document.getElementById('send-share-button').addEventListener('click', function() {
+            const email = document.getElementById('email-input').value;
+            if (email) {
+                // Assuming the email is valid (no need to actually send it in this case)
+                alert(`Cart shared with: ${email}`);
+                updateShareTally();
+                document.getElementById('email-input').value = '';  // Clear input
+                document.getElementById('email-input-container').style.display = 'none';  // Hide input box
+            } else {
+                alert('Please enter a valid email.');
+            }
+        });
+
+        // Render the cart and update share tally on page load
+        window.onload = function() {
+            renderCart();
+            updateShareTally();  // Update share tally from localStorage
+        }
     </script>
 </body>
 </html>
